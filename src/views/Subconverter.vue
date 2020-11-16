@@ -265,22 +265,12 @@ export default {
           v2ray: "v2ray"
         },
         customBackend: {
-          "localhost:25500 本地版": "http://localhost:25500/sub?",
-          "subcon.dlj.tf(subconverter作者提供1)":
-            "https://subcon.dlj.tf/sub?",
-          "subconverter-web.now.sh(subconverter作者提供2-稳定)":
-            "https://subconverter-web.now.sh/sub?",
-          "subconverter.herokuapp.com(subconverter作者提供3-稳定)":
-            "https://subconverter.herokuapp.com/sub?",
-          "api.dler.io(sub作者&lhie1提供-稳定)": "https://api.dler.io/sub?",
-          "api.wcc.best(sub-web作者提供-稳定)": "https://api.wcc.best/sub?"
+            "sub.lryu4.com(厘米云官方转换)": "https://sub.lryu4.com/sub?",
+            "localhost:25500 本地版": "http://localhost:25500/sub?",
         },
         backendOptions: [
-          { value: "http://localhost:25500/sub?" },
-          { value: "https://subcon.dlj.tf/sub?" },
-          { value: "https://subconverter-web.now.sh/sub?" },
-          { value: "https://subconverter.herokuapp.com/sub?" },
-          { value: "https://api.wcc.best/sub?" }
+            { value: "https://sub.lryu4.com/sub?" },
+            { value: "http://localhost:25500/sub?" },
         ],
         remoteConfig: [
           {
@@ -414,76 +404,6 @@ export default {
                 label: "Urltest",
                 value:
                   "https://subconverter.oss-ap-southeast-1.aliyuncs.com/Rules/RemoteConfig/universal/urltest.ini"
-              }
-            ]
-          },
-          {
-            label: "customized",
-            options: [
-              {
-                label: "Maying",
-                value:
-                  "https://subconverter.oss-ap-southeast-1.aliyuncs.com/Rules/RemoteConfig/customized/maying.ini"
-              },
-              {
-                label: "rixCloud",
-                value:
-                  "https://subconverter.oss-ap-southeast-1.aliyuncs.com/Rules/RemoteConfig/customized/rixcloud.ini"
-              },
-              {
-                label: "Nirvana",
-                value:
-                  "https://raw.githubusercontent.com/Mazetsz/ACL4SSR/master/Clash/config/V2rayPro.ini"
-              },
-              {
-                label: "V2Pro",
-                value:
-                  "https://raw.githubusercontent.com/Mazeorz/airports/master/Clash/V2Pro.ini"
-              },
-              {
-                label: "YoYu",
-                value:
-                  "https://subconverter.oss-ap-southeast-1.aliyuncs.com/Rules/RemoteConfig/customized/yoyu.ini"
-              },
-              {
-                label: "Ytoo",
-                value:
-                  "https://subconverter.oss-ap-southeast-1.aliyuncs.com/Rules/RemoteConfig/customized/ytoo.ini"
-              },
-              {
-                label: "NyanCAT",
-                value:
-                  "https://subconverter.oss-ap-southeast-1.aliyuncs.com/Rules/RemoteConfig/customized/nyancat.ini"
-              },
-              {
-                label: "Nexitally",
-                value:
-                  "https://subconverter.oss-ap-southeast-1.aliyuncs.com/Rules/RemoteConfig/customized/nexitally.ini"
-              },
-              {
-                label: "SoCloud",
-                value:
-                  "https://subconverter.oss-ap-southeast-1.aliyuncs.com/Rules/RemoteConfig/customized/socloud.ini"
-              },
-              {
-                label: "ARK",
-                value:
-                  "https://subconverter.oss-ap-southeast-1.aliyuncs.com/Rules/RemoteConfig/customized/ark.ini"
-              },
-              {
-                label: "ssrCloud",
-                value:
-                  "https://subconverter.oss-ap-southeast-1.aliyuncs.com/Rules/RemoteConfig/customized/ssrcloud.ini"
-              },
-              {
-                label: "贼船",
-                value:
-                  "https://subconverter.oss-ap-southeast-1.aliyuncs.com/Rules/RemoteConfig/customized/zeichuan.ini"
-              },
-              {
-                label: "布丁",
-                value:
-                  "https://subconverter.oss-ap-southeast-1.aliyuncs.com/Rules/RemoteConfig/customized/pud.ini"
               }
             ]
           },
@@ -643,20 +563,6 @@ export default {
 
       let sourceSub = this.form.sourceSubUrl;
       sourceSub = sourceSub.replace(/(\n|\r|\n\r)/g, "|");
-
-      // 薯条屏蔽
-      if (sourceSub.indexOf("losadhwse") !== -1 && (backend.indexOf("py6.pw") !== -1 || backend.indexOf("subconverter-web.now.sh") !== -1 || backend.indexOf("subconverter.herokuapp.com") !== -1 || backend.indexOf("api.wcc.best") !== -1)) {
-        this.$alert('此机场订阅已将该后端屏蔽，请自建后端转换。', '转换错误提示', {
-          confirmButtonText: '确定',
-          callback: action => {
-            this.$message({
-              type: 'error',
-              message: `action: ${ action }`
-            });
-          }
-        });
-        return false;
-      }
 
       this.customSubUrl =
         backend +
